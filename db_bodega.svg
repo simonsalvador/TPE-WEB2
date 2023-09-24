@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg
+PUBLIC "-//W3C//DTD SVG 1.1//EN"
+       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg viewBox="253 48 720 198" width="467px" height="150px" xmlns="http://www.w3.org/2000/svg" version="1.1">
+   <line x1="603" y1="133" x2="593" y2="133" style="stroke:#bbb;stroke-width:1;"/>
+   <line x1="342" y1="95" x2="332" y2="95" style="stroke:#bbb;stroke-width:1;"/>
+   <line x1="593" y1="133" x2="342" y2="95" style="stroke:#bbb;stroke-width:1;"/>
+   <line x1="595.5" y1="133" x2="599.03553390593" y2="136.53553390593" style="stroke:#bbb;stroke-width:2;"/>
+   <line x1="595.5" y1="133" x2="599.03553390593" y2="129.46446609407" style="stroke:#bbb;stroke-width:2;"/>
+   <line x1="337" y1="95" x2="340.53553390593" y2="98.535533905933" style="stroke:#bbb;stroke-width:2;"/>
+   <line x1="337" y1="95" x2="340.53553390593" y2="91.464466094067" style="stroke:#bbb;stroke-width:2;"/>
+   <rect width="64" height="20" x="268" y="65" style="fill:#007;stroke:black;"/>
+   <text width="64" height="20" x="273" y="79" style="fill:#fff;" font-family="Arial" font-size="16px"> bebidas</text>
+   <rect width="64" height="20" x="268" y="85" style="fill:#aea;stroke:black;"/>
+   <text width="64" height="20" x="273" y="99" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="64" height="20" x="268" y="105" style="fill:none;stroke:black;"/>
+   <text width="64" height="20" x="273" y="119" style="fill:black;" font-family="Arial" font-size="16px">nombre</text>
+   <rect width="64" height="20" x="268" y="125" style="fill:none;stroke:black;"/>
+   <text width="64" height="20" x="273" y="139" style="fill:black;" font-family="Arial" font-size="16px">tipo</text>
+   <rect width="64" height="20" x="268" y="145" style="fill:none;stroke:black;"/>
+   <text width="64" height="20" x="273" y="159" style="fill:black;" font-family="Arial" font-size="16px">precio</text>
+   <rect width="102" height="20" x="603" y="63" style="fill:#007;stroke:black;"/>
+   <text width="102" height="20" x="608" y="77" style="fill:#fff;" font-family="Arial" font-size="16px"> pedidos</text>
+   <rect width="102" height="20" x="603" y="83" style="fill:#aea;stroke:black;"/>
+   <text width="102" height="20" x="608" y="97" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="102" height="20" x="603" y="103" style="fill:none;stroke:black;"/>
+   <text width="102" height="20" x="608" y="117" style="fill:black;" font-family="Arial" font-size="16px">cliente</text>
+   <rect width="102" height="20" x="603" y="123" style="fill:none;stroke:black;"/>
+   <text width="102" height="20" x="608" y="137" style="fill:black;" font-family="Arial" font-size="16px">bebida_id</text>
+   <rect width="102" height="20" x="603" y="143" style="fill:none;stroke:black;"/>
+   <text width="102" height="20" x="608" y="157" style="fill:black;" font-family="Arial" font-size="16px">cantidad</text>
+   <rect width="102" height="20" x="603" y="163" style="fill:none;stroke:black;"/>
+   <text width="102" height="20" x="608" y="177" style="fill:black;" font-family="Arial" font-size="16px">fecha_pedido</text>
+</svg>
