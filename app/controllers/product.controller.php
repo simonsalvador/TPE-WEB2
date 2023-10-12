@@ -53,7 +53,7 @@ class ProductController{
 
     public function __construct() {
         // verifico logueado
-        //AuthHelper::verify();
+        // AuthHelper::verify();
 
         $this->model = new ProductModel();
         $this->view = new ProductView();
