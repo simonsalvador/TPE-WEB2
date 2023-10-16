@@ -47,11 +47,13 @@ function showCategories() {
 }
 */
 
-class ProductController{
+class ProductController
+{
     private $model;
     private $view;
 
-    public function __construct() {
+    public function __construct()
+    {
         // verifico logueado
         // AuthHelper::verify();
 
@@ -59,14 +61,28 @@ class ProductController{
         $this->view = new ProductView();
     }
 
-    public function showProducts() {
-        // obtengo tareas del controlador
-        $products = $this->model->getProduct();
-        
-        // muestro las tareas desde la vista
-        $this->view->showProduct($products);
+    // public function showCategories() {
+    //     //obtengo categorias del controlador
+    //     $categories = $this->model->getCategory();
+    //      // muestro las categorias desde la vista
+    //      $this->view->showCategory($categories);
+    // }
+
+    public function showProducts()
+    {
+        $tipo= isset($_GET['tipo']) ? $_GET['tipo'] : null;
+
+        // Si se proporciona una categoría, obtén los productos de esa categoría
+        if ($tipo) {
+            $categoryProducts = $this->model->getProduct($tipo);
+            $this->view->showProduct($categoryProducts, $tipo);
+        } else {
+            // Si no se proporciona una categoría, obtén todos los productos
+            $products = $this->model->getProduct();
+            $this->view->showProduct($products);
+        }
+
     }
+
+   
 }
-?>
-
-

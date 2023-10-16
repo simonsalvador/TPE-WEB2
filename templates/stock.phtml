@@ -1,0 +1,71 @@
+<?php require 'templates/header.phtml' ?>
+
+<?php require 'templates/form_alta.phtml' ?>
+
+
+<!-- listado de productos (ABM) -->
+<ul class="list-group">
+    <?php foreach($products as $product): ?>
+        <li class="list-group-item item-task ">
+            <div>
+                <b><?= $product->tipo ?></b> | <?=substr($product->nombre,0,25)?> | Precio: <?= $product->precio ?>
+            </div>
+            
+        </li>
+        <?php endforeach ?>
+    </ul>
+
+<p class="mt-3"><small>Mostrando <?=$count?> productos</small></p>
+<ul class="list-group">
+<!-- modificacion productos -->
+<?php foreach($products as $product): ?>
+    <li class="list-group-item item-task <?php if($product->eliminada): ?> finalizada <?php endif ?>">
+        <div>
+            <b><?= $product->tipo ?></b> | <?=substr($product->nombre,0,25)?> | Precio: <?= $product->precio ?>
+            </div>
+        <div class="actions">
+            <?php if(!$product->eliminada): ?> 
+                <a href="update/<?= $product->id ?>" type="button" class='btn btn-success ml-auto'>Modificar</a> 
+            <?php endif ?>
+            <a href="delete/<?= $product->id ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a>
+        </div>
+    </li>
+<?php endforeach ?>
+</ul>
+
+<p class="mt-3"><small>Mostrando <?=$count?> productos</small></p>
+
+
+<!-- listado de categorias (ABM) -->
+<ul class="list-group">
+<?php foreach($products as $product): ?>
+    <li class="list-group-item item-task ">
+        <div>
+            <b><?= $product->tipo ?></b> | <?=substr($product->nombre,0,25)?> |  Precio: <?= $product->precio ?>
+        </div>
+        
+    </li>
+<?php endforeach ?>
+</ul>
+
+<p class="mt-3"><small>Mostrando <?=$count?> productos</small></p>
+<ul class="list-group">
+    <!-- modificacion categorias -->
+<?php foreach($tasks as $task): ?>
+    <li class="list-group-item item-task <?php if($task->finalizada): ?> finalizada <?php endif ?>">
+        <div>
+            <b><?= $task->titulo ?></b> | <?=substr($task->descripcion,0,25)?> |  Precio: <?= $product->precio ?>
+        <div class="actions">
+            <?php if(!$task->finalizada): ?> 
+                <a href="finalizar/<?= $task->id ?>" type="button" class='btn btn-success ml-auto'>Finalizar</a> 
+            <?php endif ?>
+            <a href="eliminar/<?= $task->id ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a>
+        </div>
+    </li>
+<?php endforeach ?>
+</ul>
+
+<p class="mt-3"><small>Mostrando <?=$count?> tareas</small></p>
+
+
+<?php require 'templates/footer.phtml' ?>

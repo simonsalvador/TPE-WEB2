@@ -1,16 +1,46 @@
 <?php require './templates/header.phtml' ?>
 
 
-<ul class="list-group">
-<?php foreach($products as $product): ?>
+<!-- <ul class="list-group">
+ foreach($products as $product): ?>
     <li class="list-group-item item-task ">
         <div>
-            <b><?= $product->tipo ?></b> | <?=substr($product->nombre,0,25)?> | (precio <?= $product->precio ?>)
+            <b>= $product->tipo ?></b> | =substr($product->nombre,0,25)?> | (precio = $product->precio ?>)
         </div>
         
     </li>
-<?php endforeach ?>
-</ul>
+ endforeach
+</ul> -->
+
+<div class="row">
+            <div class="col">
+                <div class="list-group">
+                    <?php foreach ($products as $product) { ?>
+                        <a class="list-group-item list-group-item-action" href="products/<?php echo $product->tipo ?>">
+                            <?php echo $product->tipo ?>
+                        </a>
+                    <?php }?>
+                </div>     
+            </div>
+
+            <div class="col" >
+                <?php
+                    // se fija si existe el parametro y en ese caso lo busca e imprime
+                    if (!empty($tipo)){
+                             
+                    ?>
+                    <div class="card" style="width: 18rem;">
+                        <?php foreach ($tipos as $tipo) ?>//  $category = showProduct($tipo);
+                        <img class="card-img-top" src="images/avatar.png">
+                        <div class="card-body">
+                            <h4 class="card-title"><?php echo $tipo->nombre ?></h5>
+                            <h5 class="card-subtitle"><?php echo $tipo->precio?></h5>
+                            <p><?php echo $developer->email ?></p>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
 
 <p class="mt-3"><small>Mostrando <?=$count?> productos</small></p>
 
