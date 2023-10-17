@@ -21,12 +21,10 @@ switch ($params[0]) {
         if (isset($params[1])) {
             if ($params[1] === 'add') {
                 $controller->addProducts();
-            } else if ($params[1] === 'update') {
+            } else if ($params[1] === 'list') {
                 $controller->listProducts($params[2]);
             } else if ($params[1] === 'delete') {
                 $controller->deleteProducts($params[2]);
-            } else {
-                $controller->getProducts();
             }
         } else {
             $controller->getCategories();
