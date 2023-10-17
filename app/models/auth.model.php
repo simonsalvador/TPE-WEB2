@@ -7,9 +7,9 @@ class UserModel {
         $this->db = new PDO('mysql:host=localhost;dbname=db_bodega;charset=utf8', 'root', '');
     }
 
-    public function getByEmail($email) {
-        $query = $this->db->prepare('SELECT * FROM cliente WHERE email = ?');
-        $query->execute([$email]);
+    public function getByUsuario($usuario) {
+        $query = $this->db->prepare('SELECT * FROM cliente WHERE usuario= ?');
+        $query->execute([$usuario]);
         
         return $query->fetch(PDO::FETCH_OBJ);
     }

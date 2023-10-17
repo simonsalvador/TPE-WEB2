@@ -17,16 +17,16 @@ class AuthController {
     }
 
     public function auth() {
-        $email = $_POST['email'];
+        $usuario = $_POST['usuario'];
         $password = $_POST['password'];
 
-        if (empty($email) || empty($password)) {
+        if (empty($usuario) || empty($password)) {
             $this->view->showLogin('Faltan completar datos');
             return;
         }
 
         // busco el usuario
-        $user = $this->model->getByEmail($email);
+        $user = $this->model->getByUsuario($usuario);
         if ($user && password_verify($password, $user->password)) {
             // ACA LO AUTENTIQUE
             

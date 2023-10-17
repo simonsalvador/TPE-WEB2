@@ -9,6 +9,9 @@ class AdminController
 
     public function __construct()
     {
+        //verifico logueado
+         AuthHelper::verify();
+
         $this->model = new AdminModel();
         $this->view = new AdminView();
     }
@@ -43,22 +46,23 @@ class AdminController
             $this->view->showError("Error al insertar la tarea");
         }
     }
+    
+    //modificacion de productos
+    public function updateProducts($id) {
+         // obtengo los nuevos datos del usuario
+         $newName = $_POST['newName'];
+         $newCategory = $_POST['newCategory'];
+         $newPrice = $_POST['newPrice'];
 
-    function updateProducts($id) {
-        // Obtén el producto que se va a modificar
-        $product = $this->model->getProductById($id);
-
-        // Verifica si el producto existe
-        if (!$product) {
-            // Producto no encontrado, muestra un mensaje de error o redirige a una página de error
-            $this->view->showError("Producto no encontrado");
+        // validaciones
+        if (empty($newName) || empty($newCategory)) {
+            $this->view->showError("Debe completar todos los campos");
             return;
         }
-
-        $this->view->showUpdate($product);
-
-        // $this->model->updateProduct($id, $name, $category, $price);
-        //  header('Location: ' . BASE_URL);
+ 
+        $this->model->updateProduct($id, $newName, $newCategory, $newPrice);
+        header('Location: ' . BASE_URL);
+    
     }
 
     function deleteProducts($id)
@@ -66,4 +70,34 @@ class AdminController
         $this->model->deleteProduct($id);
         header('Location: ' . BASE_URL);
     }
+
+    //listar categorias
+    public function getCategories()
+    {
+        // obtengo productos
+        $categories = $this->model->getCategory();
+
+        // muestro los productos desde la vista
+        $this->view->showProduct($categories);
+    }
+
+
+
+    // public function addCategories(){
+    //      // obtengo los datos del usuario
+    //      $nameCategory = $_POST['nameCategory'];
+
+    //     if (empty($nameCategory)) {
+    //         $this->view->showError("Debe completar todos los campos");
+    //         return;
+    //     }
+
+    //     $id = $this->model->insertCategory($nameCategory);
+    //     if ($id) {
+    //         header('Location: ' . BASE_URL);
+    //     } else {
+    //         $this->view->showError("Error al insertar la tarea");
+    //     }
+         
+    // }
 }

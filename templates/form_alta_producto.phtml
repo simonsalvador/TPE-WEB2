@@ -1,6 +1,8 @@
 <!-- formulario de alta y modificacion de producto -->
-<form action="add" method="POST" class="my-4">
+<form action="products/add" method="POST" class="my-4">
+    <h2>Dashboard Productos</h2>
     <div class="row">
+        <h5>Agregar nuevo producto</h5>
         <div class="col-5">
             <div class="form-group">
                 <label>Nombre</label>
@@ -12,13 +14,20 @@
             <div class="form-group">
                 <label>Categoria</label>
                 <select required name="category" class="form-control">
-                    <?php if ($products) {
-                        foreach ($products as $product) {
-                            echo '<option value="' . $product->tipo. '">' . $product->tipo . '</option>';
-                        }
-                    } ?>
-                </select>
+                    <?php
+                    $uniqueCategories = []; // Para almacenar categorías únicas
 
+                    foreach ($products as $product) {
+                        $category = $product->tipo;
+
+                        // Agregar la categoría al array solo si no existe ya
+                        if (!in_array($category, $uniqueCategories)) {
+                            $uniqueCategories[] = $category;
+                            echo '<option value="' . $category . '">' . $category . '</option>';
+                        }
+                    }
+                    ?>
+                </select>
             </div>
         </div>
     </div>

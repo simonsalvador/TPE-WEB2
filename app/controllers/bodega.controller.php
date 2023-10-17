@@ -1,7 +1,7 @@
 <?php
 
-require_once './app/models/product.model.php';
-require_once './app/views/product.view.php';
+require_once './app/models/bodega.model.php';
+require_once './app/views/bodega.view.php';
 /*
 function showCategories() {
     $c1 = new stdClass();
@@ -47,7 +47,7 @@ function showCategories() {
 }
 */
 
-class ProductController
+class BodegaController
 {
     private $model;
     private $view;
@@ -57,16 +57,23 @@ class ProductController
         // verifico logueado
         // AuthHelper::verify();
 
-        $this->model = new ProductModel();
-        $this->view = new ProductView();
+        $this->model = new BodegaModel();
+        $this->view = new BodegaView();
     }
 
-    // public function showCategories() {
-    //     //obtengo categorias del controlador
-    //     $categories = $this->model->getCategory();
-    //      // muestro las categorias desde la vista
-    //      $this->view->showCategory($categories);
-    // }
+    //listar categorias
+    public function getCategories()
+    {
+        // obtengo productos
+        $categories = $this->model->getCategory();
+
+        // muestro los productos desde la vista
+        $this->view->showCategory($categories);
+    }
+
+    public function listProducts($id) {
+        
+    }
 
     public function showProducts()
     {

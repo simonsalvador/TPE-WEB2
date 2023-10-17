@@ -1,10 +1,17 @@
 <?php require 'templates/header.phtml' ?>
 
+<!-- 
+$clave = "admin";  
+$clave_encriptada = password_hash ($clave , PASSWORD_BCRYPT );  
+echo "La clave $clave encriptada es la siguiente: $clave_encriptada";  
+-->
+
+
 <div class="mt-5 w-25 mx-auto">
     <form method="POST" action="auth">
         <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" required class="form-control" id="email" name="email" aria-describedby="emailHelp">
+            <label for="usuario">Usuario</label>
+            <input type="text" required class="form-control" id="usuario" name="usuario" aria-describedby="emailHelp">
         </div>
         <div class="form-group">
             <label for="password">Password</label>
@@ -22,3 +29,5 @@
 </div>
 
 <?php require 'templates/footer.phtml' ?> 
+
+

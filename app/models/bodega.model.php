@@ -1,6 +1,6 @@
 <?php
 
-class ProductModel
+class BodegaModel
 {
     private $db;
 
@@ -10,16 +10,17 @@ class ProductModel
     }
  
 
-    // function getCategory()
-    // {
-    //     $query = $this->db->prepare('SELECT tipo FROM bebidas');
-    //     $query->execute();
+    //obtengo categorias de la base de datos
+    function getCategory()
+    {
+        $query = $this->db->prepare('SELECT id, tipo FROM bebidas');
+        $query->execute();
 
-    //     // $Product es un arreglo de bebidas
-    //     $categories = $query->fetchAll(PDO::FETCH_OBJ);
+        // $Product es un arreglo de bebidas
+        $categories = $query->fetchAll(PDO::FETCH_OBJ);
 
-    //     return $categories;
-    // }
+        return $categories;
+    }
     
     /**
      * Obtiene y devuelve de la base de datos todas las tareas.

@@ -1,7 +1,8 @@
 <?php
-require_once './app/controllers/product.controller.php';
+require_once './app/controllers/bodega.controller.php';
 require_once './app/controllers/auth.controller.php';
 require_once './app/controllers/admin.controller.php';
+require_once './app/controllers/adminCat.controller.php';
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
@@ -10,69 +11,60 @@ if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
 
-// listarCategorias   ->         Product.Controller->showCategories();
-//products            ->         Product.Controller->showProducts();
-//listar items        ->         Admin.Controller->getProducts();
-//agregar item         ->         Admin.Controller->addProducts();
-//modificar item/:ID       ->         Admin.Controller->updateProducts();
-//eliminar item/:ID         ->         Admin.Controller->deleteProducts();
-//listar categorias      ->         Admin.Controller->getCategories();
-//agregar categoria      ->         Admin.Controller->addCategories();
-//modificar categoria/:ID    ->         Admin.Controller->updateCategories();
-//eliminar categoria/:ID      ->         Admin.Controller->deleteCategories();           
-//login               ->         Auth.Controller->showLogin();
-// auth                 authContoller->auth(); // toma los datos del post y autentica al usuario
+
 
 $params = explode('/', $action);
 
 switch ($params[0]) {
-        // case 'listarCat':
-        //     $controller = new ProductController();
-        //     $controller->showCategories();
-        //     break;
-    case 'products':
-        $controller = new ProductController();
-        $controller->showProducts();
+    case 'home':
+        $controller = new BodegaController();
+        if (isset($params[1])) {
+            if ($params[1] === 'add') {
+                $controller->addProducts();
+            } else if ($params[1] === 'update') {
+                $controller->listProducts($params[2]);
+            } else if ($params[1] === 'delete') {
+                $controller->deleteProducts($params[2]);
+            } else {
+                $controller->getProducts();
+            }
+        } else {
+            $controller->getCategories();
+        }
         break;
-    
-    case 'admin':
-        // if (isset($params[1])) {
-        //     switch ($params[1]) {
-                // case 'list':
-                    $controller = new AdminController();
-                    $controller->getProducts();
-                    break;
-                case 'add':
-                    $controller = new AdminController();
+        case 'products':
+            $controller = new AdminController();
+            if (isset($params[1])) {
+                if ($params[1] === 'add') {
                     $controller->addProducts();
-                    break;
-                case 'update':
-                    $controller = new AdminController();
-                    $controller->updateProducts($params[1]);
-                    break;
-                case 'delete':
-                    $controller = new AdminController();
-                    $controller->deleteProducts($params[1]);
-                    break;
+                } else if ($params[1] === 'update') {
+                    $controller->updateProducts($params[2]);
+                } else if ($params[1] === 'delete') {
+                    $controller->deleteProducts($params[2]);
+                } else {
+                    $controller->getProducts();
+                }
+            } else {
+                $controller->getProducts();
+            }
+            break;
+          
                 case 'categories':
-                    // if (isset($params[2])) {
-                    //     switch ($params[2]) {
-                    //         case 'list':
-                                $controller = new AdminController();
-                                $controller->getCategories();
-                                break;
-                            case 'add':
-                                $controller = new AdminController();
-                                $controller->addCategories();
-                                break;
-                            case 'update':
-                                $controller = new AdminController();
-                                $controller->updateCategories($params[2]);
-                                break;
-                            case 'delete':
-                                $controller = new AdminController();
-                                $controller->deleteCategories($params[2]);
-                                break;
+                    $controller = new AdminCatController();
+                    if (isset($params[1])) {
+                        if ($params[1] === 'add') {
+                            $controller->addCategories();
+                        } else if ($params[1] === 'update') {
+                            $controller->updateCategories($params[2]);
+                        } else if ($params[1] === 'delete') {
+                            $controller->deleteCategories($params[2]);
+                        } else {
+                            $controller->getCategories();
+                        }
+                    } else {
+                        $controller->getCategories();
+                    }
+                    break;
         //                     default:
         //                         echo "404 Page Not Found";
         //                         break;
@@ -93,6 +85,10 @@ switch ($params[0]) {
         $controller = new AuthController();
         $controller->auth();
         break;
+        case 'logout':
+            $controller = new AuthController();
+            $controller->logout();
+            break;
     default:
         echo "404 Page Not Found";
         break;

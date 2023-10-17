@@ -1,13 +1,13 @@
 <?php
 
-class AdminView {
-    public function showProduct($products) {
-        $count = count($products);
+class AdminCatView {
+    public function showCategory($categories) {
+        $count = count($categories);
 
         // NOTA: el template va a poder acceder a todas las variables y constantes que tienen alcance en esta funcion
 
         // mostrar el template
-        require './templates/dashboard_producto.phtml';
+        require './templates/dashboard_categoria.phtml';
     }
 
     public function showError($error) {

@@ -1,0 +1,19 @@
+<!-- listado de categorias (ABM) -->
+<h5>Categorias:</h5>
+<ul class="list-group">
+    <?php
+    $shownCategories = []; // Aquí vamos a llevar un registro de las categorías mostradas.
+    foreach ($categories as $category):
+        if (!in_array($category->tipo, $shownCategories)):
+            // Si la categoría no se ha mostrado aún, la mostramos y la registramos.
+            $shownCategories[] = $category->tipo;
+            ?>
+            <li class="list-group-item item-task ">
+                <div>
+                    <b><?= $category->tipo ?></b>
+                </div>
+            </li>
+        <?php endif;
+    endforeach;
+    ?>
+</ul>
