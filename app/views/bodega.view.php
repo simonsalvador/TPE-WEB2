@@ -7,7 +7,7 @@ class BodegaView {
         // NOTA: el template va a poder acceder a todas las variables y constantes que tienen alcance en esta funcion
 
         // mostrar el template
-        require './templates/productList.phtml';
+        require './templates/listar_categorias.phtml';
     }
 
     public function showProduct($products) {
@@ -16,7 +16,7 @@ class BodegaView {
         // NOTA: el template va a poder acceder a todas las variables y constantes que tienen alcance en esta funcion
 
         // mostrar el template
-        require './templates/productList.phtml';
+        require './templates/listar_productos.phtml';
     }
 
     

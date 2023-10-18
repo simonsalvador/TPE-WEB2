@@ -81,23 +81,4 @@ class AdminController
         $this->view->showProduct($categories);
     }
 
-
-
-    // public function addCategories(){
-    //      // obtengo los datos del usuario
-    //      $nameCategory = $_POST['nameCategory'];
-
-    //     if (empty($nameCategory)) {
-    //         $this->view->showError("Debe completar todos los campos");
-    //         return;
-    //     }
-
-    //     $id = $this->model->insertCategory($nameCategory);
-    //     if ($id) {
-    //         header('Location: ' . BASE_URL);
-    //     } else {
-    //         $this->view->showError("Error al insertar la tarea");
-    //     }
-         
-    // }
 }

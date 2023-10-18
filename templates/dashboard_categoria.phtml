@@ -5,7 +5,7 @@
 <h5>Categorias:</h5>
 <ul class="list-group">
     <?php
-    $shownCategories = []; // Aquí vamos a llevar un registro de las categorías mostradas.
+    $shownCategories = []; 
     foreach ($categories as $category):
         if (!in_array($category->tipo, $shownCategories)):
             // Si la categoría no se ha mostrado aún, la mostramos y la registramos.
@@ -28,7 +28,7 @@
 <ul class="list-group">
      <h5>Modificar categoria:</h5>
     <?php
-    $shownCategories = []; // Aquí vamos a llevar un registro de las categorías mostradas.
+    $shownCategories = []; 
     foreach ($categories as $category):
         if (!in_array($category->tipo, $shownCategories)):
             // Si la categoría no se ha mostrado aún, la mostramos y la registramos.

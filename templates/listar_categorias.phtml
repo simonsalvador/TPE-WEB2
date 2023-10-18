@@ -1,0 +1,41 @@
+<?php require './templates/header.phtml' ?>
+<?php require './templates/home.phtml' ?>
+
+
+
+<!-- listado de categorias (ABM) -->
+
+<form action="home/list" method="POST" class="my-4">
+    <div class="row">
+        
+        
+        <div class="col-3">
+            <div class="form-group">
+                <label><h5>Buscar por categoria</h5></label>
+                <select required name="categoryID" class="form-control">
+                    <?php
+                    $uniqueCategories = []; // Para almacenar categorías únicas
+
+                    foreach ($categories as $category) {
+                        $categoryID = $category->id; // Obtén el ID de la categoría
+                        $categoryName = $category->tipo;
+
+                        
+                        if (!in_array($categoryID, $uniqueCategories)) {
+                            $uniqueCategories[] = $categoryID;
+                            echo '<option value="' . $categoryID . '">' . $categoryName . '</option>';
+                        }
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <button type="submit" class='btn btn-success ml-auto'>Mostrar Productos</button>
+    
+</form>
+<?php require './templates/description.phtml' ?>
+<?php require './templates/footer.phtml' ?>

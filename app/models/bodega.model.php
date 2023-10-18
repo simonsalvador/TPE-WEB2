@@ -23,21 +23,15 @@ class BodegaModel
     }
     
     /**
-     * Obtiene y devuelve de la base de datos todas las tareas.
+     * Obtiene y devuelve LOS PRODUCTOS POR CATEGORia.
      */
-    function getProduct($tipo = null)
-    {
-        if ($tipo !== null) {
-            $query = $this->db->prepare('SELECT * FROM bebidas WHERE tipo = ?');
-            $query->execute([$tipo]);
-        } else {
-            $query = $this->db->prepare('SELECT * FROM bebidas');
-            $query->execute();
-        }
-
-        // $Product es un arreglo de bebidas
+    function getProductsByCategory($categoryId) {
+        $query = $this->db->prepare('SELECT * FROM bebidas WHERE id = ?');
+        $query->execute([$categoryId]);
+    
+        // $products es un arreglo de bebidas
         $products = $query->fetchAll(PDO::FETCH_OBJ);
-
+    
         return $products;
     }
 

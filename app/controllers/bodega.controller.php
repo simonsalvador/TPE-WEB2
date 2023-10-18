@@ -2,50 +2,6 @@
 
 require_once './app/models/bodega.model.php';
 require_once './app/views/bodega.view.php';
-/*
-function showCategories() {
-    $c1 = new stdClass();
-    $c1->titulo = 'vinos';
-    $c1->contenido = 'categoria completa de los vinos disponibles en la bodega';
-    $c1->imagen = '';
-    
-    $c2 = new stdClass();
-    $c2->titulo = 'cervezas';
-    $c2->contenido = 'categoria completa de las cervezas disponibles en la bodega';
-    $c2->imagen = '';
-    
-    $c3 = new stdClass();
-    $c3->titulo = 'whisky';
-    $c3->contenido = 'categoria completa de los whisky disponibles en la bodega';
-    $c3->imagen = '';
-    
-    $c4 = new stdClass();
-    $c4->titulo = 'gin';
-    $c4->contenido = 'categoria completa de los gin disponibles en la bodega';
-    $c4->imagen = '';
-
-    $c5 = new stdClass();
-    $c5->titulo = "vodka";
-    $c5->contenido = "categoria completa de los vodka disponibles en la bodega";
-    $c5->imagen = "";
-    
-    $c6 = new stdClass();
-    $c6->titulo = "espumantes";
-    $c6->contenido = "categoria completa de los espumantes disponibles en la bodega";
-    $c6->imagen = "";
-
-    $categoria = [$c1, $c2, $c3, $c4, $c5,  $c6];
-    return $categoria;
-}
-
-/**
- * Obtiene la noticia segun un id pasado como parametro
- */
-/*function getcategoriaById($id) {
-    $categoria = getcategoria();
-    return $categoria[$id];
-}
-*/
 
 class BodegaController
 {
@@ -54,8 +10,6 @@ class BodegaController
 
     public function __construct()
     {
-        // verifico logueado
-        // AuthHelper::verify();
 
         $this->model = new BodegaModel();
         $this->view = new BodegaView();
@@ -71,25 +25,19 @@ class BodegaController
         $this->view->showCategory($categories);
     }
 
-    public function listProducts($id) {
-        
-    }
-
-    public function showProducts()
+    public function listProducts()
     {
-        $tipo= isset($_GET['tipo']) ? $_GET['tipo'] : null;
+        // obtengo los nuevos datos del usuario
+        $categoryId = $_POST['categoryID'];
 
-        // Si se proporciona una categoría, obtén los productos de esa categoría
-        if ($tipo) {
-            $categoryProducts = $this->model->getProduct($tipo);
-            $this->view->showProduct($categoryProducts, $tipo);
-        } else {
-            // Si no se proporciona una categoría, obtén todos los productos
-            $products = $this->model->getProduct();
-            $this->view->showProduct($products);
+        // validaciones
+        if (empty($categoryId)) {
+            $this->view->showError("Debe elegir una categoria");
+            return;
         }
 
+        $products = $this->model->getProductsByCategory($categoryId);
+        // Muestra los productos desde la vista.
+        $this->view->showProduct($products);
     }
-
-   
 }
